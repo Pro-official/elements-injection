@@ -3,7 +3,6 @@
     "name": "Title",
     "level": "h1",
     "type": "heading",
-    "className": "mainheading",
     "content": "<strong>This is all about how we use dorik element for creating our site.</strong>",
     "style": {
       "color": "red",
@@ -11,6 +10,33 @@
       "fontSize": "32px",
       "textAlign": "justify",
       "lineHeight": 1.2
+    }
+  },
+  {
+    "name": "Title",
+    "level": "h2",
+    "type": "heading",
+    "content": "<bold>This is all about how we use dorik element for creating our site heres.</bold>",
+    "style": {
+      "color": "green",
+      "marginTop": "20px",
+      "marginLeft": "30px",
+      "fontSize": "32px",
+      "textAlign": "justify",
+      "lineHeight": 1.2
+    }
+  },
+  {
+    "name": "Title",
+    "level": "h3",
+    "type": "heading",
+    "content": "<p>We can use h1 to h6</p>",
+    "style": {
+      "color": "#3a30ba",
+      "fontSize": "24px",
+      "padding": "15px",
+      "textAlign": "left",
+      "textTransform": "capitalize"
     }
   },
   {

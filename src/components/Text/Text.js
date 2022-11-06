@@ -1,19 +1,12 @@
 import React from "react";
-import { Style } from "react-style-tag";
+import { Markup } from "interweave";
 
 const Text = (element) => {
-  const { name, type, style, content } = element.element.element;
-  //   console.log(element.element.element);
+  const { content, newClass, type } = element.element.element;
+  // console.log(newClass);
   return (
     <div>
-      <p className="text">{type}</p>
-
-      <Style>{`
-          .text {
-            color: red;
-            background-color: black;
-          }
-        `}</Style>
+      {type === "text" && <Markup className={newClass} content={content} />}
     </div>
   );
 };

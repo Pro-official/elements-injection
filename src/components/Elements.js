@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from "react";
-// import { Markup } from "interweave";
+import React from "react";
 import Element from "./Element";
+import { useElements } from "../Context/JSONContext";
 
 const Elements = () => {
-  const [elements, setElements] = useState([]);
+  const { elements, success } = useElements();
 
-  useEffect(() => {
-    fetch(`./Data/elements.json`)
-      .then((res) => res.json())
-      .then((data) => setElements(data));
-  }, []);
-
-  // console.log(elements);
+  // Generating Style
 
   return (
-    <div>
-      {/* {elements
-        .filter((el) => el.type === "heading")
-        .map((element) => (
-          <h1>
-            <Markup tagName="p" content={element.content} />
-          </h1>
-        ))} */}
-      {elements.map((element) => (
-        <Element element={element} />
-      ))}
-    </div>
+    <>
+      <div>
+        {success &&
+          elements.map((element, index) => (
+            <Element key={index} element={element} />
+          ))}
+      </div>
+    </>
   );
 };
 
