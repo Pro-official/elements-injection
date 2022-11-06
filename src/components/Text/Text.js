@@ -5,9 +5,13 @@ const Text = (element) => {
   const { content, newClass, type } = element.element.element;
   // console.log(newClass);
   return (
-    <div>
-      {type === "text" && <Markup className={newClass} content={content} />}
-    </div>
+    <>
+      {type === "text" && (
+        <p className={newClass}>
+          <Markup tagName="p" className={newClass} content={content} />
+        </p>
+      )}
+    </>
   );
 };
 

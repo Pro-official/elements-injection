@@ -7,7 +7,6 @@ import Elements from "./components/Elements";
 import { APIContextProvider } from "./Context/JSONContext";
 
 function App() {
-  // const [elements] = useElements();
   const [elements, setElements] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -19,7 +18,18 @@ function App() {
 
   var withClass = "";
   elements.map((element, index) => {
-    var styles = element.style;
+    var generalStyles = element.style;
+    if (element.type === "subscription") {
+      var formStyles = element.form.style;
+      // var formFieldStyles = element.form.fields.style;
+      // var formButtonStyles = element.form.submitButton.style;
+    }
+    var styles = {
+      ...generalStyles,
+      ...formStyles,
+      // ...formFieldStyles,
+      // ...formButtonStyles,
+    };
     var normalStyle = "";
     for (const property in styles) {
       var newStyle = `${property}: ${styles[property]}`;
@@ -37,6 +47,7 @@ function App() {
       ${normalStyle}
   }`;
   });
+  // console.log(withClass);
 
   return (
     <APIContextProvider>

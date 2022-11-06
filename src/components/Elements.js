@@ -4,9 +4,6 @@ import { useElements } from "../Context/JSONContext";
 
 const Elements = () => {
   const { elements, success } = useElements();
-
-  // Generating Style
-
   return (
     <>
       <div>
