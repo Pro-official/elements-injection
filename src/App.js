@@ -16,20 +16,28 @@ function App() {
     fetchData();
   }, []);
 
-  var withClass = "";
+  var withNormalClass = "";
+  var withFieldClass = "";
+  var withButtonClass = "";
+  var items = [];
+  var allStyles = "";
+
   elements.map((element, index) => {
     var generalStyles = element.style;
+
     if (element.type === "subscription") {
+      var { form } = element;
+      items.push(form.fields.items);
       var formStyles = element.form.style;
-      // var formFieldStyles = element.form.fields.style;
-      // var formButtonStyles = element.form.submitButton.style;
+      var formFieldStyles = form.fields.style;
+      var formButtonStyles = form.submitButton.style;
     }
+
     var styles = {
       ...generalStyles,
       ...formStyles,
-      // ...formFieldStyles,
-      // ...formButtonStyles,
     };
+
     var normalStyle = "";
     for (const property in styles) {
       var newStyle = `${property}: ${styles[property]}`;
@@ -39,21 +47,66 @@ function App() {
         .toLowerCase();
       normalStyle = normalStyle + "\n" + newStyle + ";";
     }
-    withClass =
-      withClass +
+    withNormalClass =
+      withNormalClass +
       "\n" +
       `.${element.type}${index}
   {
       ${normalStyle}
   }`;
+
+    var formFieldStyle = "";
+    for (const property in formFieldStyles) {
+      var newFormStyle = `${property}: ${formFieldStyles[property]}`;
+      newFormStyle = newFormStyle
+        .replace(/([A-Z])/g, "-$1")
+        .trim()
+        .toLowerCase();
+      formFieldStyle = formFieldStyle + "\n" + newFormStyle + ";";
+    }
+    items.map((item, index) => {
+      item.map(
+        (i, index) =>
+          (withFieldClass =
+            withFieldClass +
+            "\n" +
+            `.${i.name}${i.id} 
+{
+  ${formFieldStyle}
+}`)
+      );
+    });
+
+    var buttonStyle = "";
+    for (const property in formButtonStyles) {
+      var newButtonStyle = `${property}: ${formButtonStyles[property]}`;
+      newButtonStyle = newButtonStyle
+        .replace(/([A-Z])/g, "-$1")
+        .trim()
+        .toLowerCase();
+      buttonStyle = buttonStyle + "\n" + newButtonStyle + ";";
+    }
+
+    if (element.type === "subscription") {
+      withButtonClass =
+        withButtonClass +
+        "\n" +
+        `.${form.submitButton.content}
+{
+  ${buttonStyle}
+}`;
+    }
   });
-  // console.log(withClass);
+
+  allStyles = `${withNormalClass}
+${withFieldClass}
+${withButtonClass}`;
 
   return (
     <APIContextProvider>
       <div className="App">
         <Helmet>
-          <style>{withClass}</style>
+          <style>{allStyles}</style>
         </Helmet>
         <Elements />
       </div>
