@@ -1,16 +1,12 @@
 import React from "react";
 import { Markup } from "interweave";
 
-const Text = (element) => {
-  const { content, newClass, type } = element.element.element;
-  // console.log(newClass);
+const Text = ({ element }) => {
+  const { newClass, content } = element.element;
+  // console.log(type);
   return (
     <>
-      {type === "text" && (
-        <p className={newClass}>
-          <Markup tagName="p" className={newClass} content={content} />
-        </p>
-      )}
+      <Markup tagName="p" className={newClass} content={content} />
     </>
   );
 };

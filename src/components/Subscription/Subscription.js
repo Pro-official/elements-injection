@@ -2,15 +2,14 @@ import React from "react";
 
 const Subscription = (element) => {
   const { type, newClass, form } = element.element.element;
+  // console.log(newClass);
   const items = form.fields.items;
   const submitButton = form.submitButton;
-  console.log(submitButton);
-
-  items.map((item, index) => console.log(item.id + index));
+  // console.log(submitButton);
 
   return (
     <>
-      {type === "subscription" && (
+      {type === "Subscription" && (
         <form className={newClass}>
           {items.map((item, index) => (
             <>

@@ -1,12 +1,11 @@
 import React from "react";
 
-const Image = (element) => {
-  const { attr, newClass, type } = element.element.element;
+const Image = ({ element }) => {
+  const { newClass, attr } = element.element;
+  // console.log(attr);
   return (
     <>
-      {type === "image" && (
-        <img className={newClass} src={attr.src} alt={attr.alt} />
-      )}
+      <img className={newClass} src={attr.src} alt={attr.alt} />{" "}
     </>
   );
 };

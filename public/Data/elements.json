@@ -1,6 +1,19 @@
 [
   {
-    "type": "subscription",
+    "name": "Title",
+    "level": "h1",
+    "type": "Heading",
+    "content": "<strong>This is all about how we use dorik element for creating our site.</strong>",
+    "style": {
+      "color": "red",
+      "marginTop": "20px",
+      "fontSize": "32px",
+      "textAlign": "justify",
+      "lineHeight": 1.2
+    }
+  },
+  {
+    "type": "Subscription",
     "name": "Subscription Form",
     "form": {
       "fields": {
@@ -38,7 +51,8 @@
           "backgroundColor": "#26c281",
           "height": "46px",
           "fontSize": "18px",
-          "borderRadius": "5px 5px 5px 5px"
+          "borderRadius": "5px 5px 5px 5px",
+          "border": "1px solid #222"
         }
       },
       "style": {
@@ -52,21 +66,8 @@
   },
   {
     "name": "Title",
-    "level": "h1",
-    "type": "heading",
-    "content": "<strong>This is all about how we use dorik element for creating our site.</strong>",
-    "style": {
-      "color": "red",
-      "marginTop": "20px",
-      "fontSize": "32px",
-      "textAlign": "justify",
-      "lineHeight": 1.2
-    }
-  },
-  {
-    "name": "Title",
     "level": "h2",
-    "type": "heading",
+    "type": "Heading",
     "content": "<bold>This is all about how we use dorik element for creating our site heres.</bold>",
     "style": {
       "color": "green",
@@ -80,7 +81,7 @@
   {
     "name": "Title",
     "level": "h3",
-    "type": "heading",
+    "type": "Heading",
     "content": "<p>We can use h1 to h6</p>",
     "style": {
       "color": "#3a30ba",
@@ -91,7 +92,7 @@
     }
   },
   {
-    "type": "text",
+    "type": "Text",
     "name": "Text",
     "content": "<p>We can use text element to use as a paragraph.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>",
     "style": {
@@ -103,7 +104,7 @@
     }
   },
   {
-    "type": "image",
+    "type": "Image",
     "name": "Image",
     "style": {
       "objectFit": "cover",
