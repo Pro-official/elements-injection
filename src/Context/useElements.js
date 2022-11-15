@@ -17,20 +17,10 @@ export function APIContextProvider({ children }) {
     fetchData();
   }, []);
 
-  var classData = {
-    elements: elements
-      .filter((el) => el.type !== "")
-      .map((el, index) => ({
-        ...el,
-        key: index,
-        newClass: el.type + index,
-      })),
-  };
-
   return (
     <JSONContext.Provider
       value={{
-        elements: classData.elements,
+        elements: elements,
         success: success,
       }}
     >
