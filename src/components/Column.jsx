@@ -10,7 +10,6 @@ const Column = ({ column }) => {
     <div className={`${type}-${id}`}>
       {content.map((element, index) => {
         const Component = components[TypeCamelCase(element.type)];
-        console.log(Component);
         return <Component key={index} element={element} />;
       })}
     </div>

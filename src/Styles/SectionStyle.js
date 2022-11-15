@@ -1,4 +1,4 @@
-import { GetStyles } from "../App";
+import { GetStyles } from "../Export/StyleInjection";
 import camelCaseParser from "./camelCaseParser";
 
 function SectionStyle(className, style) {

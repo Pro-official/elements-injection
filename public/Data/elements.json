@@ -130,7 +130,8 @@
             "type": "column",
             "style": {
               "paddingTop": "15px",
-              "paddingBottom": "15px"
+              "paddingBottom": "15px",
+              "overflow": "hidden"
             },
             "content": [
               {
