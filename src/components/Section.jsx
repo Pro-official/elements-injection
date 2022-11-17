@@ -1,18 +1,14 @@
 import React from "react";
 import SectionStyle from "../Styles/SectionStyle";
-import Row from "./Row";
 
-const Section = ({ section }) => {
-  const { id, style, content, type } = section;
-  SectionStyle(`${type}-${id}`, style);
+const Section = ({ children, elements }) => {
+  const { style, type, id } = elements;
+  if (elements) {
+    SectionStyle(`${type}-${id}`, style);
+  }
+  // console.log(content);
 
-  return (
-    <section className={`${type}-${id}`}>
-      {content.map((row, index) => {
-        return <Row key={index} row={row} />;
-      })}
-    </section>
-  );
+  return <section className={`${type}-${id}`}>{children}</section>;
 };
 
 export default Section;

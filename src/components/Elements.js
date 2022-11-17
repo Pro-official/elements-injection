@@ -1,17 +1,10 @@
 import React from "react";
 import { useElements } from "../Context/useElements";
-import Section from "./Section";
+import Element from "./Element";
 
 const Elements = () => {
   const { elements, success } = useElements();
-  return (
-    <div>
-      {success &&
-        elements.map((section) => {
-          return <Section key={section.id} section={section} />;
-        })}
-    </div>
-  );
+  return <div>{success && <Element elements={elements} />}</div>;
 };
 
 export default Elements;

@@ -1,14 +1,37 @@
 import React from "react";
-import loadable from "@loadable/component";
+import myElements from "./index";
+import TypeCamelCase from "../Styles/TypeCamelCase";
 
-const AsyncPage = loadable((props) => import(`./${props.type}`), {
-  cacheKey: (props) => props.type,
-});
-
-const Element = (element) => {
-  const { type } = element.element;
-
-  return <AsyncPage type={type} element={element} />;
+const Element = ({ elements }) => {
+  // console.log(typeof tree);
+  return (
+    <>
+      {elements.map((element) => {
+        const Component = myElements[TypeCamelCase(element.type)];
+        return (
+          <React.Fragment key={element.id}>
+            {Array.isArray(element.content) ? (
+              <>
+                <Component
+                  key={element.id}
+                  elements={element}
+                  className={`${element.type}-${element.id}`}
+                >
+                  <Element id={element.id} elements={element.content} />
+                </Component>
+              </>
+            ) : (
+              <Component
+                className={`${element.type}-${element.id}`}
+                key={element.key}
+                element={element}
+              />
+            )}
+          </React.Fragment>
+        );
+      })}
+    </>
+  );
 };
 
 export default Element;
