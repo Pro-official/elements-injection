@@ -1,5 +1,7 @@
 import React from "react";
+import { ultimateStyles } from "../Styles/ultimateStyles";
 import SubscriptionStyle from "../Styles/SubscriptionStyle";
+import { subscription } from "../Export/styles";
 
 const Subscription = ({ element }) => {
   const { id, form, type } = element;

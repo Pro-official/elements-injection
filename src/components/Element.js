@@ -3,7 +3,6 @@ import myElements from "./index";
 import TypeCamelCase from "../Styles/TypeCamelCase";
 
 const Element = ({ elements }) => {
-  // console.log(typeof tree);
   return (
     <>
       {elements.map((element) => {

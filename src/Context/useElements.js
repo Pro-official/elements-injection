@@ -1,27 +1,24 @@
-import React, { useContext, useState, useEffect, createContext } from "react";
+import React, { useContext, createContext } from "react";
 import axios from "axios";
+import { useQuery } from "react-query";
 
 const JSONContext = createContext();
 
 export function APIContextProvider({ children }) {
-  const [elements, setElements] = useState([]);
-  const [success, setSuccess] = useState(false);
+  const { data, isLoading } = useQuery("elements", () => {
+    return axios.get(`./Data/elements.json`);
+  });
 
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios.get(`./Data/elements.json`);
-      setSuccess(false);
-      setElements(data);
-      setSuccess(true);
-    }
-    fetchData();
-  }, []);
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  }
+  // console.log(data.data);
 
   return (
     <JSONContext.Provider
       value={{
-        elements: elements,
-        success: success,
+        elements: data?.data,
+        success: isLoading,
       }}
     >
       {children}

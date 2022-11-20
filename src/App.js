@@ -1,17 +1,21 @@
 import "./App.css";
 import { APIContextProvider } from "./Context/useElements";
 import Elements from "./components/Elements";
-// import { GetStyles } from "./Export/StyleInjection";
+// import { section, row } from "./Export/styles";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
-  // GetStyles();
-
   return (
-    <APIContextProvider>
-      <div className="App">
-        <Elements />
-      </div>
-    </APIContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <APIContextProvider>
+        {/* <Style /> */}
+        <div className="App">
+          <Elements />
+        </div>
+      </APIContextProvider>
+    </QueryClientProvider>
   );
 }
 

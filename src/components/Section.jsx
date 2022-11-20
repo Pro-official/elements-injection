@@ -6,7 +6,6 @@ const Section = ({ children, elements }) => {
   if (elements) {
     SectionStyle(`${type}-${id}`, style);
   }
-  // console.log(content);
 
   return <section className={`${type}-${id}`}>{children}</section>;
 };

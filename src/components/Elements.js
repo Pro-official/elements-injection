@@ -4,7 +4,14 @@ import Element from "./Element";
 
 const Elements = () => {
   const { elements, success } = useElements();
-  return <div>{success && <Element elements={elements} />}</div>;
+  if (success) {
+    return <h2>Loading...</h2>;
+  }
+  return (
+    <>
+      <Element elements={elements} />
+    </>
+  );
 };
 
-export default Elements;
+export default React.memo(Elements);
