@@ -1,11 +1,11 @@
 import React from "react";
 import { Markup } from "interweave";
-import HeadingStyle from "../Styles/HeadingStyle";
+// import HeadingStyle from "../Styles/HeadingStyle";
 
 const Heading = ({ element }) => {
-  const { id, type, content, style, titleType } = element;
+  const { id, type, content, titleType } = element;
 
-  HeadingStyle(`${type}-${id}`, style);
+  // HeadingStyle(`${type}-${id}`, style);
   return (
     <Markup className={`${type}-${id}`} tagName={titleType} content={content} />
   );

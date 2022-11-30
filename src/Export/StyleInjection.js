@@ -6,6 +6,6 @@ export function GetStyles(styles) {
   if (typeof styles === "string") {
     newStyle = newStyle + "\n" + styles;
     // console.log(newStyle);
-    Style.appendChild(document.createTextNode(newStyle));
+    // Style.appendChild(document.createTextNode(newStyle));
   }
 }

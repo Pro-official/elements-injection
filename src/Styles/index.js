@@ -1,4 +1,4 @@
-import ButtonStyle from "./ButtonStyle";
+import ButtonStyle from "./buttonStyle";
 import ImageStyle from "./ImageStyle";
 import SubscriptionStyle from "./SubscriptionStyle";
 import TextStyle from "./TextStyle";

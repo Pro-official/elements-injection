@@ -1,110 +1,70 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import { useElements } from "../Context/useElements";
+// import camelCaseParser from "../Styles/camelCaseParser";
 
-const Style = () => {
-  const { elements } = useElements();
+// var allStyles = [];
+// function know(hey, hi) {
+//   if (hi.type !== "subscription") {
+//     var mSt = camelCaseParser(hi.style);
+//     // const newMst = `{
+//     //   ${mSt}
+//     // }`;
+//     const styles = { hey, mSt };
 
-  var formFieldStyles = "";
-  var formButtonStyles = "";
+//     allStyles.push(styles);
+//   }
+// }
+// if (allStyles !== "") {
+//   const timer = setTimeout(() => {
+//     console.log(allStyles);
+//   }, 5000);
+// }
+// // const timer = setTimeout(() => {
+// //   allStyles?.map((al) => console.log(al));
+// // }, 5000);
 
-  var withNormalClass = "";
-  var withFieldClass = "";
-  var withButtonClass = "";
+// var sth = { know, allStyles };
 
-  var items = [];
-  var allStyles = "";
+// export default sth;
 
-  elements.map((element, index) => {
-    var generalStyles = element.style;
+// ***************************
 
-    if (element.type === "Subscription") {
-      var { form } = element;
-      items.push(form.fields.items);
-      var formStyles = element.form.style;
-      formFieldStyles = form.fields.style;
-      formButtonStyles = form.submitButton.style;
-    }
+// import camelCaseParser from "../Styles/camelCaseParser";
+// import TypeCamelCase from "../Styles/TypeCamelCase";
+// // import objectToCss from "../utils/objectToCss";
+// // import stringToCamelizeCase from "../utils/stringToCamelizeCase";
+// import styleFns from "../Styles/index";
+// const styles = [];
 
-    var styles = {
-      ...generalStyles,
-      ...formStyles,
-    };
+// const styleGenerate = (data) => {
+//   data.forEach((item) => {
+//     // console.log(item);
+//     const className = `.${item.type}-${item.id}`;
+//     // console.log(className);
+//     const style = item.style
+//       ? camelCaseParser(item.style)
+//       : camelCaseParser(item.form.style);
+//     // console.log(style);
+//     const fns = styleFns[`${TypeCamelCase(item.type)}Style`];
+//     console.log(fns);
+//     styles.push(fns(className, style));
 
-    // GENERAL ELEMENT STYLES
-    var normalStyle = "";
-    for (const property in styles) {
-      var newStyle = `${property}: ${styles[property]}`;
-      newStyle = newStyle
-        .replace(/([A-Z])/g, "-$1")
-        .trim()
-        .toLowerCase();
-      normalStyle = normalStyle + "\n" + newStyle + ";";
-    }
-    withNormalClass =
-      withNormalClass +
-      "\n" +
-      `.${element.type}${index}
-    {
-        ${normalStyle}
-    }`;
+//     if (Array.isArray(item.content)) {
+//       styleGenerate(item.content);
+//     }
 
-    // FORM INPUT STYLES
-    var formFieldStyle = "";
-    for (const property in formFieldStyles) {
-      let newFormStyle = `${property}: ${formFieldStyles[property]}`;
-      newFormStyle = newFormStyle
-        .replace(/([A-Z])/g, "-$1")
-        .trim()
-        .toLowerCase();
-      formFieldStyle = formFieldStyle + "\n" + newFormStyle + ";";
-      console.log(formFieldStyle);
-    }
-    items.map((item, index) => {
-      item.map(
-        (i, index) =>
-          (withFieldClass =
-            withFieldClass +
-            "\n" +
-            `.${i.name}${i.id} 
-  {
-    ${formFieldStyle}
-  }`)
-      );
-    });
+//     if (item.form) {
+//       const fn = styleFns["ButtonStyle"];
+//       let className = `.${item.form.submitButton.type}-${item.form.submitButton.id}`;
+//       styles.push(fn(className, camelCaseParser(item.form.submitButton.style)));
+//       item.form.fields.items.forEach((i) => {
+//         const fn = styleFns["InputStyle"];
+//         className = `.${i.type}-${i.id}`;
+//         styles.push(fn(className, camelCaseParser(item.form.fields.style)));
+//       });
+//     }
+//   });
 
-    // FORM BUTTON STYLES
-    var buttonStyle = "";
-    for (const property in formButtonStyles) {
-      var newButtonStyle = `${property}: ${formButtonStyles[property]}`;
-      newButtonStyle = newButtonStyle
-        .replace(/([A-Z])/g, "-$1")
-        .trim()
-        .toLowerCase();
-      buttonStyle = buttonStyle + "\n" + newButtonStyle + ";";
-    }
+//   // console.log(styles);
+//   return styles;
+// };
 
-    if (element.type === "Subscription") {
-      withButtonClass =
-        withButtonClass +
-        "\n" +
-        `.${form.submitButton.content}
-  {
-    ${buttonStyle}
-  }`;
-    }
-  });
-
-  allStyles = `${withNormalClass}
-  ${withFieldClass}
-  ${withButtonClass}`;
-  return (
-    <div>
-      <Helmet>
-        <style>{allStyles}</style>
-      </Helmet>
-    </div>
-  );
-};
-
-export default Style;
+// export default styleGenerate;

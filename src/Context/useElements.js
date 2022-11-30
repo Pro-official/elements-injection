@@ -12,7 +12,6 @@ export function APIContextProvider({ children }) {
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
-  // console.log(data.data);
 
   return (
     <JSONContext.Provider

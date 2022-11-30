@@ -1,12 +1,7 @@
-import { GetStyles } from "../Export/StyleInjection";
-import camelCaseParser from "./camelCaseParser";
+const buttonStyle = (className, style) => {
+  return `${className} 
+  {${style}
+}`;
+};
 
-function ButtonStyle(className, style) {
-  const parsedStyle = camelCaseParser(style);
-  const newStyle = `.${className} {
-    ${parsedStyle}
-  }`;
-  GetStyles(newStyle);
-}
-
-export default ButtonStyle;
+export default buttonStyle;

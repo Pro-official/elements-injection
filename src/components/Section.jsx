@@ -1,10 +1,10 @@
 import React from "react";
-import SectionStyle from "../Styles/SectionStyle";
+// import SectionStyle from "../Styles/SectionStyle";
 
 const Section = ({ children, elements }) => {
-  const { style, type, id } = elements;
+  const { type, id } = elements;
   if (elements) {
-    SectionStyle(`${type}-${id}`, style);
+    // SectionStyle(`${type}-${id}`, style);
   }
 
   return <section className={`${type}-${id}`}>{children}</section>;

@@ -1,9 +1,7 @@
 import React from "react";
-import ImageStyle from "../Styles/ImageStyle";
 
 const Image = ({ element }) => {
-  const { id, type, style, attr } = element;
-  ImageStyle(`${type}-${id}`, style);
+  const { id, type, attr } = element;
 
   return <img className={`${type}-${id}`} {...attr} alt={attr.alt} />;
 };
